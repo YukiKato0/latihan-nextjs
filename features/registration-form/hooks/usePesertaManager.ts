@@ -27,10 +27,9 @@ export function usePesertaManager(initialData: IPeserta[] = Peserta) {
   // Menghapus data
   const deletePeserta = useCallback((id: number) => {
     setListPeserta((prev) => prev.filter((item) => item.id !== id));
-    if (editPeserta?.id === id) {
-      setEditPeserta(null);
-    }
-  }, [editPeserta]);
+
+    setEditPeserta((prev) => (prev?.id === id ? null : prev));
+  }, []);
 
   // Batal Edit
   const cancelEdit = useCallback(() => {
