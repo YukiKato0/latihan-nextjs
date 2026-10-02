@@ -1,13 +1,13 @@
 import { Button, Card } from '@/components/ui';
 import { IPeserta } from '../types/form';
 
-interface ListDataProps {
+interface CardDataProps {
   peserta: IPeserta;
   onEdit: (peserta: IPeserta) => void;
   onDelete: (id: number) => void;
 }
 
-export default function ListData({ peserta, onEdit, onDelete }: ListDataProps) {
+export default function CardData({ peserta, onEdit, onDelete }: CardDataProps) {
   return (
     <Card className="w-full flex justify-between items-center p-5 shadow-sm hover:shadow-md transition-shadow">
       <div className="space-y-1">

@@ -1,6 +1,6 @@
 "use client";
 
-import { RegistrationForm, GridData } from "@/features/registration-form";
+import { RegistrationForm, ListData } from "@/features/registration-form";
 import { usePesertaManager } from "@/features/registration-form/hooks/usePesertaManager";
 import { Peserta } from "@/features/registration-form/mock/data";
 
@@ -25,7 +25,7 @@ export default function HalamanUtama() {
       </section>
 
       <section aria-label="Daftar Peserta Registrasi">
-        <GridData
+        <ListData
           listPeserta={listPeserta}
           onEditPeserta={setEditPeserta}
           onDeletePeserta={deletePeserta}

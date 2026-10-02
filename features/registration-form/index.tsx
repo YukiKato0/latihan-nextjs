@@ -1,9 +1,10 @@
 "use client";
 
 import FormInput from "./components/FormInput";
-import ListData from "./components/ListData";
+import CardData from "./components/CardData";
 import { Card } from '@/components/ui';
 import { IPeserta, PesertaFormData } from "./types/form";
+import TableData from "./components/TableData";
 
 interface RegistrationFormProps {
   editPeserta: IPeserta | null;
@@ -41,7 +42,7 @@ export function GridData({ listPeserta, onEditPeserta, onDeletePeserta }: GridDa
     <ul className="w-full flex flex-col gap-3 overflow-y-auto max-h-125 px-2 py-1">
       {listPeserta.map((peserta) => (
         <li key={peserta.id}>
-          <ListData
+          <CardData
             peserta={peserta}
             onEdit={onEditPeserta}
             onDelete={onDeletePeserta}
@@ -50,4 +51,39 @@ export function GridData({ listPeserta, onEditPeserta, onDeletePeserta }: GridDa
       ))}
     </ul>
   );
+}
+
+interface ListDataProps {
+  listPeserta: IPeserta[];
+  onEditPeserta: (peserta: IPeserta) => void;
+  onDeletePeserta: (id: number) => void
+}
+
+export function ListData({ listPeserta, onEditPeserta, onDeletePeserta }: ListDataProps) {
+  if (listPeserta.length === 0) {
+    return (
+      <div className="w-full text-center py-10 text-gray-500 border border-dashed rounded-lg">
+        Belum ada data peserta.
+      </div>
+    );
+  }
+
+  return (
+    <table>
+      <thead>
+        <tr>
+          <th>Nama</th>
+          <th>Alamat</th>
+          <th>Aksi</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {listPeserta.map((peserta) => (
+          <TableData key={peserta.id} peserta={peserta} onEdit={onEditPeserta} onDelete={onDeletePeserta} />
+        ))}
+      </tbody>
+
+    </table>
+  )
 }
